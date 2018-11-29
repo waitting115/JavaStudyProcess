@@ -1,0 +1,78 @@
+Java中的接口
+在Java编程语言中，一个接口是一个引用类型，类似于类，它可以包含只
+
+常量，方法签名，默认的方法，静态方法和嵌套类型。方法体仅适用于默
+
+认方法和静态方法。接口无法实例化 - 它们只能由类实现或由其他接口
+
+扩展。扩展将在本课程后面讨论。
+
+定义接口类似于创建新类：
+
+public interface OperateCar { 
+
+   //常量声明，如果有的话
+
+   //方法签名
+   
+   //枚举值为RIGHT，LEFT 
+   int turn（方向，
+            double radius，
+            double startSpeed，
+            double endSpeed）; 
+   int changeLanes（Direction direction，
+                   double startSpeed，
+                   double endSpeed）; 
+   int signalTurn（Direction direction，
+                  boolean signalOn）; 
+   int getRadarFront（double distanceToCar，
+                     double speedOfCar）; 
+   int getRadarRear（double distanceToCar，
+                    double speedOfCar）; 
+         ......
+   //更多方法签名
+}
+请注意，方法签名没有大括号，并以分号结束。
+
+要使用接口，请编写实现该接口的类。当可实例化的类实现接口时，它为
+
+接口中声明的每个方法提供方法体。例如，
+
+公共类OperateBMW760i实现OperateCar { 
+
+    // OperateCar方法签名，带有实现 - 
+    //例如：
+    int signalTurn（方向，boolean signalOn）{ 
+       //用于打开宝马LEFT转向指示灯的
+       代码//代码转向BMW左转关闭指示灯
+       //代码打开宝马的右转弯指示灯
+       //代码关闭宝马的右转弯指示灯
+    } 
+
+    //其他成员，根据需要 - 例如，辅助类不对
+    界面的客户端可见
+}
+在上面的机器人汽车示例中，汽车制造商将实施该界面。当然，雪佛兰的
+
+实施将与丰田的实施大不相同，但两家制造商都将遵循相同的界面。作为
+
+界面客户的指导制造商将构建在汽车位置使用GPS数据的系统，数字街道
+
+地图和交通数据来驱动汽车。这样，引导系统将调用界面方法：转弯，改
+
+变车道，制动，加速等。
+
+作为API的接口
+机器人汽车示例显示了用作行业标准应用程序编程接口（API）的接口。
+
+API在商业软件产品中也很常见。通常，公司销售的软件包包含另一家公
+
+司希望在其自己的软件产品中使用的复杂方法。一个例子是销售给制作最
+
+终用户图形程序的公司的数字图像处理方法包。图像处理公司编写其类以
+
+实现接口，该接口向其客户公开。然后，图形公司使用界面中定义的签名
+
+和返回类型调用图像处理方法。虽然图像处理公司的API是公开的（对其
+
+客户），但其实施的API仍然是一个严密保密的秘密 - 事实上，
